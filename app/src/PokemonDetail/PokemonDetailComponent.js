@@ -10,7 +10,6 @@ pokemonApp.component('pokemonDetail', {
         self.pokemon = PokemonsService.get({
             pokemonId: $routeParams['pokemonId']
         }, function(successResult) {
-            // Окей!
             self.notfoundError = false;
             self.pokemonLoaded = true;
 
@@ -18,23 +17,20 @@ pokemonApp.component('pokemonDetail', {
             self.disableControlTab = true;
             console.log(self);
         }, function(errorResult) {
-            // Не окей..
             self.notfoundError = true;
             self.pokemonLoaded = true;
         });
 
         self.pokemon.$promise.then(function(result) {
-            //self.pokemonLoaded = true;
+
         });
 
         self.deletePokemon = function(pokemonId) {
             self.pokemon.$delete({
                 pokemonId: pokemonId
             }, function(successResult) {
-                // Окей!
                 self.deletionSuccess = true;
             }, function(errorResult) {
-                // Не окей..
                 self.deletionError = true;
             });
         }
